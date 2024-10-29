@@ -18,7 +18,7 @@ public class CustomerEntity
     private Integer age;
     private char gender;
     private String city;
-    private Long mobile;
+    private String mobile;
     private String email;
     private String pass;
 }
