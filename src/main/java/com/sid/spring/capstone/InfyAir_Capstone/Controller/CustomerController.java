@@ -2,7 +2,7 @@ package com.sid.spring.capstone.InfyAir_Capstone.Controller;
 
 import com.sid.spring.capstone.InfyAir_Capstone.DTO.CustomerDTO;
 import com.sid.spring.capstone.InfyAir_Capstone.Exception.InvalidUserException;
-import com.sid.spring.capstone.InfyAir_Capstone.Exception.UserAlreadyPresent;
+import com.sid.spring.capstone.InfyAir_Capstone.Exception.InfyAirException;
 import com.sid.spring.capstone.InfyAir_Capstone.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class CustomerController
     private CustomerService customerService;
 
     @PostMapping("/register")
-    public ResponseEntity<CustomerDTO> registerCustomer(@RequestBody CustomerDTO customerDTO) throws UserAlreadyPresent {
+    public ResponseEntity<CustomerDTO> registerCustomer(@RequestBody CustomerDTO customerDTO) throws InfyAirException {
         customerService.registerCustomer(customerDTO);
         return ResponseEntity
                 .status(HttpStatus.CREATED).body(customerDTO);
