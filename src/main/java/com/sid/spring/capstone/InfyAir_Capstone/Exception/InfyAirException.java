@@ -1,8 +1,8 @@
 package com.sid.spring.capstone.InfyAir_Capstone.Exception;
 
-public class UserAlreadyPresent extends Exception
+public class InfyAirException extends Exception
 {
-    public UserAlreadyPresent(String message)
+    public InfyAirException(String message)
     {
         super(message);
     }

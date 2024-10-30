@@ -3,13 +3,12 @@ package com.sid.spring.capstone.InfyAir_Capstone.Service;
 import com.sid.spring.capstone.InfyAir_Capstone.DTO.CustomerDTO;
 import com.sid.spring.capstone.InfyAir_Capstone.Entity.CustomerEntity;
 import com.sid.spring.capstone.InfyAir_Capstone.Exception.InvalidUserException;
-import com.sid.spring.capstone.InfyAir_Capstone.Exception.UserAlreadyPresent;
+import com.sid.spring.capstone.InfyAir_Capstone.Exception.InfyAirException;
 import com.sid.spring.capstone.InfyAir_Capstone.ModelMapper.ModelMapper;
 import com.sid.spring.capstone.InfyAir_Capstone.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -22,12 +21,12 @@ public class CustomerServiceImpl implements CustomerService
     private ModelMapper modelMapper;
 
     @Override
-    public CustomerDTO registerCustomer(CustomerDTO customerDTO) throws UserAlreadyPresent {
+    public CustomerDTO registerCustomer(CustomerDTO customerDTO) throws InfyAirException {
         CustomerEntity checkEntity = modelMapper.customerDtoToCustomerEntity(customerDTO);
         Optional<CustomerEntity> customer = customerRepository.findByMobile(checkEntity.getMobile());
         if(customer.isPresent())
         {
-            throw new UserAlreadyPresent("User Already Registered with " + customer.get().getMobile() + "this mobile no.");
+            throw new InfyAirException("User Already Registered with " + customer.get().getMobile() + " this mobile");
         }
         customerRepository.save(checkEntity);
         return customerDTO;

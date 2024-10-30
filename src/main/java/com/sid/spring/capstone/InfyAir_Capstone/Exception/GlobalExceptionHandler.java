@@ -22,11 +22,11 @@ public class GlobalExceptionHandler
         return new ResponseEntity<>(errorInfo, HttpStatus.UNAUTHORIZED);
     }
 
-    @ExceptionHandler(UserAlreadyPresent.class)
-    public ResponseEntity<ErrorInfo> userAlreadyPresent(UserAlreadyPresent userAlreadyPresent, WebRequest webRequest)
+    @ExceptionHandler(InfyAirException.class)
+    public ResponseEntity<ErrorInfo> userAlreadyPresent(InfyAirException infyAirException, WebRequest webRequest)
     {
         ErrorInfo errorInfo = new ErrorInfo();
-        errorInfo.setErrorMessage(userAlreadyPresent.getMessage());
+        errorInfo.setErrorMessage(infyAirException.getMessage());
         errorInfo.setErrorCode(HttpStatus.BAD_REQUEST);
         errorInfo.setLocalDateTime(LocalDateTime.now());
         errorInfo.setInfo(webRequest.getDescription(false));

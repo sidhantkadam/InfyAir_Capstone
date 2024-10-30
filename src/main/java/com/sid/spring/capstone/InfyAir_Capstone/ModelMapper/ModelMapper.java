@@ -2,8 +2,10 @@ package com.sid.spring.capstone.InfyAir_Capstone.ModelMapper;
 
 import com.sid.spring.capstone.InfyAir_Capstone.DTO.AirportDTO;
 import com.sid.spring.capstone.InfyAir_Capstone.DTO.CustomerDTO;
+import com.sid.spring.capstone.InfyAir_Capstone.DTO.FlightDTO;
 import com.sid.spring.capstone.InfyAir_Capstone.Entity.AirportEntity;
 import com.sid.spring.capstone.InfyAir_Capstone.Entity.CustomerEntity;
+import com.sid.spring.capstone.InfyAir_Capstone.Entity.FlightEntity;
 import org.hibernate.internal.util.StringHelper;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
@@ -18,4 +20,8 @@ public interface ModelMapper
     AirportEntity airportDtoToEntity(AirportDTO airportDTO);
 
     AirportDTO airportEntityToDto(AirportEntity airportEntity);
+
+    FlightEntity flightDtoToEntity(FlightDTO flightDTO);
+
+    FlightDTO flightEntityToDto(FlightEntity flightEntity);
 }
