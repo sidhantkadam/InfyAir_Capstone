@@ -2,10 +2,8 @@ package com.sid.spring.capstone.InfyAir_Capstone.Service;
 
 import com.sid.spring.capstone.InfyAir_Capstone.DTO.FlightDTO;
 import com.sid.spring.capstone.InfyAir_Capstone.Exception.InfyAirException;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public interface FlightService
 {
@@ -15,5 +13,7 @@ public interface FlightService
 
     FlightDTO updateFlight(Integer id, FlightDTO flightDTO) throws InfyAirException;
 
-    List<FlightDTO> getAllFLightDetails(String source, String destination, LocalDateTime doj);
+    List<FlightDTO> getAllFlightDetails(String source, String destination, LocalDate doj);
+
+    void deleteFlightById(Integer id) throws InfyAirException;
 }
