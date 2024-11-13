@@ -23,11 +23,8 @@ public class CustomerServiceImpl implements CustomerService
     @Override
     public CustomerDTO registerCustomer(CustomerDTO customerDTO) throws InfyAirException {
         CustomerEntity checkEntity = modelMapper.customerDtoToCustomerEntity(customerDTO);
-        Optional<CustomerEntity> customer = customerRepository.findByMobile(checkEntity.getMobile());
-        if(customer.isPresent())
-        {
-            throw new InfyAirException("User Already Registered with " + customer.get().getMobile() + " this mobile");
-        }
+        customerRepository.findByMobile(checkEntity.getMobile())
+                .orElseThrow(() -> new InfyAirException("User Already Registered with " + checkEntity.getMobile() + " this mobile"));
         customerRepository.save(checkEntity);
         return customerDTO;
     }
